@@ -1,0 +1,491 @@
+# encoding: UTF-8
+# pt-BR translations for Ruby on Rails
+"pt-BR":
+  # formatos de data e hora
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %B"
+      long: "%d de %B de %Y"
+
+    day_names:
+      - Domingo
+      - Segunda
+      - Terça
+      - Quarta
+      - Quinta
+      - Sexta
+      - Sábado
+    abbr_day_names:
+      - Dom
+      - Seg
+      - Ter
+      - Qua
+      - Qui
+      - Sex
+      - Sáb
+
+    month_names:
+      - ~
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
+    abbr_month_names:
+      - ~
+      - Jan
+      - Fev
+      - Mar
+      - Abr
+      - Mai
+      - Jun
+      - Jul
+      - Ago
+      - Set
+      - Out
+      - Nov
+      - Dez
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%A, %d de %B de %Y, %H:%M h"
+      short: "%d/%m, %H:%M h"
+      long: "%A, %d de %B de %Y, %H:%M h"
+    am: ''
+    pm: ''
+
+  # Usado no Array.to_sentence
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " e "
+      last_word_connector: " e "
+
+    select:
+      prompt: "Por favor selecione"
+
+  number:
+    format:
+      separator: ','
+      delimiter: '.'
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: '%u %n'
+        unit: 'R$'
+        separator: ','
+        delimiter: '.'
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: '.'
+
+    precision:
+      format:
+        delimiter: '.'
+
+    human:
+      format:
+        delimiter: '.'
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      # number_to_human()
+      # new in rails 3: please add to other locales
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "mil"
+          million:
+            one: milhão
+            other: milhões
+          billion:
+            one: bilhão
+            other: bilhões
+          trillion:
+            one: trilhão
+            other: trilhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+
+  # distancia do tempo em palavras
+  datetime:
+    distance_in_words:
+      half_a_minute: 'meio minuto'
+      less_than_x_seconds:
+        one: 'menos de 1 segundo'
+        other: 'menos de %{count} segundos'
+      x_seconds:
+        one: '1 segundo'
+        other: '%{count} segundos'
+      less_than_x_minutes:
+        one: 'menos de um minuto'
+        other: 'menos de %{count} minutos'
+      x_minutes:
+        one: '1 minuto'
+        other: '%{count} minutos'
+      about_x_hours:
+        one: 'aproximadamente 1 hora'
+        other: 'aproximadamente %{count} horas'
+      x_days:
+        one: '1 dia'
+        other: '%{count} dias'
+      about_x_months:
+        one: 'aproximadamente 1 mês'
+        other: 'aproximadamente %{count} meses'
+      x_months:
+        one: '1 mês'
+        other: '%{count} meses'
+      about_x_years:
+        one: 'aproximadamente 1 ano'
+        other: 'aproximadamente %{count} anos'
+      over_x_years:
+        one: 'mais de 1 ano'
+        other: 'mais de %{count} anos'
+      almost_x_years:
+        one: 'quase 1 ano'
+        other: 'quase %{count} anos'
+    prompts:
+      year:   "Ano"
+      month:  "Mês"
+      day:    "Dia"
+      hour:   "Hora"
+      minute: "Minuto"
+      second: "Segundo"
+
+  helpers:
+    select:
+      prompt: "Por favor selecione"
+
+    submit:
+      create: 'Criar %{model}'
+      update: 'Atualizar %{model}'
+      submit: 'Salvar %{model}'
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages: &errors_messages
+      inclusion: "não está incluído na lista"
+      exclusion: "não está disponível"
+      invalid: "não é válido"
+      confirmation: "não está de acordo com a confirmação"
+      accepted: "deve ser aceito"
+      empty: "não pode ficar vazio"
+      blank: "não pode ficar em branco"
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length: "não possui o tamanho esperado (%{count} caracteres)"
+      not_a_number: "não é um número"
+      not_an_integer: "não é um número inteiro"
+      greater_than: "deve ser maior que %{count}"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      equal_to: "deve ser igual a %{count}"
+      less_than: "deve ser menor que %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      odd: "deve ser ímpar"
+      even: "deve ser par"
+      taken: "já está em uso"
+      record_invalid: "A validação falhou: %{errors}"
+    template: &errors_template
+      header:
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros."
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+
+  activerecord:
+    errors:
+      messages:
+        <<: *errors_messages
+      template:
+        <<: *errors_template
+
+      full_messages:
+        format: "%{attribute} %{message}"
+
+    models:
+      user: :user
+      posting: :posting
+      invoice: :invoice
+      account: :account
+    attributes:
+      user:
+        password: "Senha"
+        email: :"Email"
+        password_confirmatio: "Confirmação da senha"
+        created_at: Criado
+        updated_at: Atualizado
+      posting:
+        issue: Emissão
+        value: Valor
+        created_at: Criado
+        updated_at: Atualizado
+        account: Conta
+      invoice:
+        issue: Date de Emissão
+        expiration: Data de Vencimento
+        payment: Data de Pagamento
+        value: Valor
+        account: Conta
+        created_at: Criado
+        updated_at: Atualizado
+        pay: Paga
+      account:
+        name: :name
+        code: :code
+        operation: :operation
+        created_at: Criado
+        updated_at: Atualizado
+        invoices: Faturas
+        postings: Lançamentos
+        inverses: Contas Que a Usam como Estorno
+        childrens: Contas Filhas
+
+
+  new: Novo(a)
+  updated: "Dados atualizados com sucesso!"
+  created: "Dados cadastrados com sucesso!"
+  home: Início
+  welcome: "Bem Vindo"
+  to: ao
+  percentage: Percentual
+  id: identificador
+  signed_in: "Logado como"
+  sign_up: "Novo Usuário"
+  sign_out: Logout
+  sign_in: login
+  forgot_your_password: "Esqueceu sua senha"
+  remember_me: Lembrar-me
+  first_name: "Primeiro Nome"
+  last_name: "Último Nome"
+  nickname: Apelido
+  birthdate: "Nascimento/Constituição"
+  remark: Observação
+  code: Código
+  acronym: Abreviatura
+  active: Ativo
+  state_registration: IE/RG
+  municipal_registration: IM
+  taxpayer_identification: CNPJ/CPF
+  person: Pessoa
+  people: Pessoas
+  account: Conta
+  invoice: Fatura
+  posting: Lançamento
+  save: Salvar
+  back: Voltar
+  edit: Editar
+  show: Mostrar
+  destroy: Excluir
+  listing: Listando
+  editing: Editando
+  number_phone: Número Telefone
+  phone: Telefone
+  email: Email
+  address: Endereço
+  type: Tipo
+  contact: Contato
+  "or": ou
+  "yes": Sim
+  "no": Não
+  zip_code: CEP
+  street: Logradouro
+  streets: Logradouros
+  name: Nome
+  countries: Países
+  country: País
+  are_you_sure?: Você Tem Certeza?
+  hide: Esconder
+  cancel: Cancelar
+  additional_address: Complemento
+  city: Município
+  neighborhood: Bairro
+  neighborhoods: Bairros
+  state: Estado
+  announcements: Anúncios
+  announcement: Anúncio
+  website: Site
+  image: Imagem
+  description: Descrição
+  search: Pesquisar
+  states: Estados
+  state: Estado
+  region: Região
+  regions: Regiões
+  cities: Cidades
+  citie: Cidade
+  keyword: Palavra Chave
+  keywords: Palavras Chave
+  addresses: Endereços
+  announcement_type: Tipo de Anúncio
+  announcement_types: Tipos de Anúncios
+  contact_type: Tipo de Contato
+  contact_types: Tipos de Contatos
+  place: Lugar
+  user: Usuário
+  visited: Visitado
+  created_at: Criado
+  updated_at: Atualizado
+  phones: Telefones
+  search: Pesquisas
+  business_type: Tipo de Serviço
+  find: Procurar
+
+  home:
+    name: Home
+  views:
+    pagination:
+      previous: "&laquo; Anterior"
+      next: "Próximo &raquo;"
+      truncate: "…"
+  admin:
+    misc:
+      search: "Procurar"
+      filter: "Filtrar"
+      refresh: "Atualizar"
+      show_all: "Mostrar tudo"
+      add_filter: "Novo Filtro..."
+      bulk_menu_title: "Itens selecionados..."
+      remove: "Remover"
+      add_new: "Criar Novo"
+      chosen: "%{name} escolhido"
+      chose_all: "Escolher tudo"
+      clear_all: "Limpar tudo"
+      up: "Cima"
+      down: "Baixo"
+      navigation: "Navegação"
+      log_out: "Terminar Sessão"
+      ago: "atrás"
+    flash:
+      successful: "%{name} %{action} com sucesso"
+      error: "%{name} %{action} sem sucesso"
+      noaction: "Nenhuma ação executada"
+      model_not_found: "Modelo '%{model}' não encontrado "
+      object_not_found: "%{model} com identificador '%{id}' não encontrado"
+    table_headers:
+      model_name: "Nome do modelo"
+      last_used: "Última vez usado em"
+      records: "Registros"
+      username: "Usuário"
+      changes: "Alterações"
+      created_at: "Data/Hora"
+      item: "Item"
+      message: "Mensagem"
+    actions:
+      dashboard:
+        title: "Administração do Site"
+        menu: "Dashboard"
+        breadcrumb: "Dashboard"
+      index:
+        title: "Lista de %{model_label_plural}"
+        menu: "Lista"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "Detalhes para %{model_label} '%{object_label}'"
+        menu: "Mostrar"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "Mostrar na aplicação"
+      new:
+        title: "Novo %{model_label}"
+        menu: "Criar novo"
+        breadcrumb: "Novo"
+        link: "Criar um novo %{model_label}"
+        done: "criado"
+      edit:
+        title: "Editar %{model_label} '%{object_label}'"
+        menu: "Editar"
+        breadcrumb: "Editar"
+        link: "Editar este %{model_label}"
+        done: "atualizado"
+      delete:
+        title: "Remover %{model_label} '%{object_label}'"
+        menu: "Remover"
+        breadcrumb: "Remover"
+        link: "Remover '%{object_label}'"
+        done: "removido"
+      bulk_delete:
+        title: "Remover %{model_label_plural}"
+        menu: "Remover vários"
+        breadcrumb: "Remover vários"
+        bulk_link: "Remover selecionados %{model_label_plural}"
+      export:
+        title: "Exportar %{model_label}"
+        menu: "Exportar"
+        breadcrumb: "Exportar"
+        link: "Exportar %{model_label_plural} encontrados"
+        bulk_link: "Exportar %{model_label_plural} selecionados"
+        done: "exportados"
+      history_index:
+        title: "Histórico para %{model_label_plural}"
+        menu: "Histórico"
+        breadcrumb: "Histórico"
+      history_show:
+        title: "Histórico para %{model_label} '%{object_label}'"
+        menu: "Histórico"
+        breadcrumb: "Histórico"
+    form:
+      cancel: "Cancelar"
+      new_model: "Novo(a) %{name}"
+      basic_info: "Informação Básica"
+      required: "Obrigatórios"
+      optional: "Opcional"
+      one_char: "caracter"
+      char_length_up_to: "comprimento até"
+      char_length_of: "comprimento de"
+      save: "Gravar"
+      save_and_add_another: "Gravar e criar outro"
+      save_and_edit: "Gravar e editar"
+      all_of_the_following_related_items_will_be_deleted: "? Os seguintes item serão apagados ou deixados orfãos:"
+      are_you_sure_you_want_to_delete_the_object: "Tem a certeza que quer apagar este %{model_name}"
+      confirmation: "Sim, tenho a certeza"
+      delete_confirmation: "Confirmar apagar"
+      bulk_delete: "Os seguintes objetos serão apagados, o que pode apagar ou deixar orfãos as dependências relacionadas"
+    export:
+      confirmation: "Exportar para %{name}"
+      select: "Selecionar campos para exportar"
+      fields_from: "Campos de %{name}"
+      fields_from_associated: "Campos associados com %{name}"
+      display: "Mostrar %{name}: %{type}"
+      options_for: "Opções para %{name}"
+      empty_value_for_associated_objects: "<vazio>"
+      click_to_reverse_selection: 'Click para inverter selecção'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "Codificar para"
+        encoding_to_help: "Escolha a codificação. Deixe em branco para manter a codificação original: (%{name})"
+        skip_header: "Sem cabeçalho"
+        skip_header_help: "Não gerar cabeçalhos para (Campos sem cabeçalho)"
+        default_col_sep: ","
+        col_sep: "Separador de colunas"
+        col_sep_help: "Deixar em branco para usar omissão ('%{value}')" # value is default_col_sep
