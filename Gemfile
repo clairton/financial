@@ -24,7 +24,8 @@ gem 'jquery-rails'
 
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
-
+#validacao de datas
+gem 'validates_date_time', :git => 'https://github.com/nickstenning/validates_date_time.git'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

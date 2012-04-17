@@ -16,6 +16,12 @@ GIT
       remotipart (~> 1.0)
       sass-rails (~> 3.1)
 
+GIT
+  remote: https://github.com/nickstenning/validates_date_time.git
+  revision: 434d28dbb50556d5ba45a891eb88975f2e90a20b
+  specs:
+    validates_date_time (1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -155,3 +161,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  validates_date_time!

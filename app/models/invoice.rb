@@ -1,24 +1,28 @@
 #encoding: utf-8
 require 'date'
+require 'validates_date_time'
 class Invoice < ActiveRecord::Base
+  #relacionamento
   belongs_to :account
+  #validaçoes
   validates_presence_of :expiration, :issue, :value, :account
   validates_associated :account
   validates_numericality_of :value
   validates_inclusion_of :pay, :in => [true, false]
   validate :validates
-  #validates_date :expiration
-  #validates_date :issue
-  #validates_date :payment, :allow_nil => true
-
+  validates_date :expiration
+  validates_date :issue
+  validates_date :payment, :allow_nil => true
+  #callbacks
+  before_update :posting_on_update
+  before_create :posting_on_create
+  #metodos acessores
   attr_accessible :expiration, :issue,
                   :payment, :issue,
                   :value, :account,
-                  :account, :account_id, :pay, :a
+                  :account, :account_id, :pay
 
-  before_update :posting_on_update
-  before_create :posting_on_create
-
+  #se for para ser paga deve haver data de pagamento
   def validates
     if(self.pay and self.payment.nil?)
       errors.add(:payment, "data de pagamento não pode ficar em branco")
