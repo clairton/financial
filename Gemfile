@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
+gem 'rails', '~> 3.2.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-#gem "pg"
+gem "pg"
 
+gem "devise"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,26 +23,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+#engine javascript
+gem 'therubyracer', require: 'v8'
 
+gem 'jquery-rails'
+#telas do sistema, pois nao irei gerar views
 gem 'fastercsv' # Only required on Ruby 1.8 and below
-gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'rails_admin', :git => 'git@github.com:clairton/rails_admin.git'
 #validacao de datas
 gem 'validates_date_time', :git => 'https://github.com/nickstenning/validates_date_time.git'
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-
-gem "devise"
