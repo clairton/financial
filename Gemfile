@@ -29,7 +29,7 @@ gem 'therubyracer', require: 'v8'
 gem 'jquery-rails'
 #telas do sistema, pois nao irei gerar views
 gem 'fastercsv' # Only required on Ruby 1.8 and below
-gem 'rails_admin', :git => 'git@github.com:clairton/rails_admin.git'
+gem 'rails_admin', :git => 'https://github.com/sferik/rails_admin.git'
 #validacao de datas
 gem 'validates_date_time', :git => 'https://github.com/nickstenning/validates_date_time.git'
 
