@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem "pg"
 
+gem 'thin'
+
 gem "devise"
 
 # Gems used only for assets and not required
