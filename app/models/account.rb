@@ -16,4 +16,11 @@ class Account < ActiveRecord::Base
                   :children_ids,
                   :invoice_ids, 
                   :posting_ids
+  def account
+    @father = Account.new
+  end
+  
+  def value
+    0
+  end
 end

@@ -118,9 +118,9 @@
             %th.other.right.shrink= "..."
           %th.last.shrink
       %tbody
-        - total_sum = 0.00
+        - total_sum = 0
         - @objects.each do |object|
-          - total_sum = total_sum + object.value  
+          - total_sum = eval("#{total_sum}#{object.account.operation}#{object.value}")  
           %tr
             %td
               = check_box_tag "bulk_ids[]", object.id, false
