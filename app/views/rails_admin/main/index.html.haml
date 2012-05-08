@@ -1,4 +1,5 @@
 :ruby
+  @total_sum = Decimal.new
   require 'rails_admin/config/fields/types/datetime.rb'
   query = params[:query]
   params = request.params.except(:authenticity_token, :action, :controller, :utf8, :bulk_export, :_pjax)
@@ -47,8 +48,6 @@
       $.filters.append(#{field.label.to_json}, #{field.name.to_json}, #{field.type.to_json}, #{filter_hash['v'].to_json}, #{filter_hash['o'].to_json}, #{field_options.to_json}, #{filter_index.to_json});
     }
   end.join.html_safe if @ordered_filters
-
-- total_sum = 0
 
 = content_for :contextual_tabs do
   = bulk_menu
@@ -120,7 +119,8 @@
           %th.last.shrink
       %tbody
         - @objects.each do |object|
-          - total_sum = eval("#{total_sum}#{object.account.operation}#{object.value}")  
+          - total_sum = @total_sum
+          - @total_sum = eval("#{total_sum}#{object.account.operation}#{object.value}")  
           %tr
             %td
               = check_box_tag "bulk_ids[]", object.id, false
@@ -140,5 +140,6 @@
       .clearfix.total-count= "#{total_count} #{@model_config.label_plural.downcase}"
     - else
       .clearfix.total-count= "#{@objects.size} #{@model_config.label_plural.downcase}"
+    - total_sum = @total_sum
     = "Total #{total_sum}"
               
