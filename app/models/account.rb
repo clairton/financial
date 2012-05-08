@@ -13,6 +13,8 @@ class Account < ActiveRecord::Base
                   :invoices, 
                   :postings,
                   :inverse_ids, 
+                  :reverse_id,
+                  :reverse,
                   :children_ids,
                   :invoice_ids, 
                   :posting_ids

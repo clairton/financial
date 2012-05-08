@@ -29,7 +29,7 @@ RailsAdmin.config do |config|
 
   #  ==> Global list view settings
   # Number of default rows per-page:
-#  config.default_items_per_page = 20
+  config.default_items_per_page = 2
 
   #  ==> Included models
   # Add all excluded models here:
@@ -91,4 +91,13 @@ RailsAdmin.config do |config|
       field :password_confirmation
     end
   end
+  
+  # config.model Account do
+    # colocar somente +/- para operacion
+    # deixa somente o campo pai
+    # deixa somente uma conta reversa 
+    # edit do
+      # field :reverse
+    # end
+  # end
 end

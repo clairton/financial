@@ -4,55 +4,47 @@ require 'validates_date_time'
 class Invoice < ActiveRecord::Base
   #relacionamento
   belongs_to :account
+  has_many :postings, :inverse_of => :invoice, :dependent => :destroy
   #validaçoes
-  validates_presence_of :expiration, :issue, :value, :account
+  validates_presence_of :expiration, :value, :account
   validates_associated :account
   validates_numericality_of :value
-  validates_inclusion_of :pay, :in => [true, false]
-  validate :validates
   validates_date :expiration
-  validates_date :issue
   validates_date :payment, :allow_nil => true
   #callbacks
   before_update :posting_on_update
   before_create :posting_on_create
   #metodos acessores
-  attr_accessible :expiration, :issue,
-                  :payment, :issue,
+  attr_accessible :expiration, :payment,
                   :value, :account,
-                  :account, :account_id, :pay
-
-  #se for para ser paga deve haver data de pagamento
-  def validates
-    if(self.pay and self.payment.nil?)
-      errors.add(:payment, "data de pagamento não pode ficar em branco")
-    end
-  end
+                  :account, :account_id,:posting_ids,
+                  :postings
 
   def posting_on_update
     #se o estado de pagamento foi modificado
-    if  self.pay_changed?
+    if  self.payment_changed?
       #estorno
-      if self.pay == false
-        puts 'false, tem q estornar'
+      if self.payment.nil?
         #lançar na conta de estorno
+        if self.account.reverse.nil?
+          self.errors.add(:account, 'conta para estorno esta nula, clique em editar e adicione uma conta para estorno')
+          return false
+        end
         @a = self.account.reverse
-        #apagar data de pagamento
-        self.payment = nil
         date = Date::today
       #pagamento
       else
-        puts 'true, tem q pagar'
         @a = self.account
         date = self.payment
       end
       @posting = Posting.create(
         :issue => date,
         :value => self.value,
-        :account => @a
+        :account => @a,
+        :invoice => self
       )
       if(@posting.errors)
-        @posting.errors.each { |k, v| self.errors.add(k, v)}
+        @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
         @posting.save
       end
@@ -60,14 +52,15 @@ class Invoice < ActiveRecord::Base
   end
 
   def posting_on_create
-    if self.pay
+    if !self.payment.nil?
       @posting = Posting.create(
         :issue => self.issue,
         :value => self.value,
-        :account => self.account
+        :account => self.account,
+        :invoice => self
       )
       if(@posting.errors)
-        @posting.errors.each { |k, v| self.errors.add(k, v)}
+        @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
         @posting.save
       end

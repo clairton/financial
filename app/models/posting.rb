@@ -1,8 +1,10 @@
 class Posting < ActiveRecord::Base
-  belongs_to :account#, :inverse_of => :postings
-  validates_presence_of :account, :value, :issue
+  belongs_to :invoice, :inverse_of => :postings
+  belongs_to :account, :inverse_of => :postings
+  validates_presence_of :invoice, :account, :value, :issue
   validates_numericality_of :value
+  validates_associated :invoice
   validates_associated :account
-  attr_accessible :account, :value, :issue, :account_id
-  #field :issue, :type => Date
+  validates_date :issue
+  attr_accessible :invoice, :account, :value, :issue, :invoice_id, :account_id
 end

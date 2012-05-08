@@ -1,5 +1,5 @@
 :ruby
-  @total_sum = Decimal.new
+  @total_sum = 0
   require 'rails_admin/config/fields/types/datetime.rb'
   query = params[:query]
   params = request.params.except(:authenticity_token, :action, :controller, :utf8, :bulk_export, :_pjax)
@@ -140,6 +140,6 @@
       .clearfix.total-count= "#{total_count} #{@model_config.label_plural.downcase}"
     - else
       .clearfix.total-count= "#{@objects.size} #{@model_config.label_plural.downcase}"
-    - total_sum = @total_sum
-    = "Total #{total_sum}"
+  - total_sum = @total_sum
+  = "Total #{total_sum}"
               
