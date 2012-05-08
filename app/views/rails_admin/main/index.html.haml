@@ -48,6 +48,7 @@
     }
   end.join.html_safe if @ordered_filters
 
+- total_sum = 0
 
 = content_for :contextual_tabs do
   = bulk_menu
@@ -118,7 +119,6 @@
             %th.other.right.shrink= "..."
           %th.last.shrink
       %tbody
-        - total_sum = 0
         - @objects.each do |object|
           - total_sum = eval("#{total_sum}#{object.account.operation}#{object.value}")  
           %tr
