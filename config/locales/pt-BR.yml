@@ -250,6 +250,7 @@
         created_at: Criado
         updated_at: Atualizado
         account: Conta
+        postings: :postings
       invoice:
         issue: Date de Emissão
         expiration: Data de Vencimento
@@ -258,7 +259,7 @@
         account: Conta
         created_at: Criado
         updated_at: Atualizado
-        pay: Paga
+        postings: :postings
       account:
         name: :name
         code: :code
@@ -269,6 +270,7 @@
         postings: Lançamentos
         inverses: Contas Que a Usam como Estorno
         childrens: Contas Filhas
+        postings: :postings
 
 
   new: Novo(a)
@@ -359,6 +361,8 @@
   search: Pesquisas
   business_type: Tipo de Serviço
   find: Procurar
+  postings: Lançamentos
+  operation: Operação
 
   home:
     name: Home
