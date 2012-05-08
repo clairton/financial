@@ -130,16 +130,26 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (1.0.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sequel (3.20.0)
+    sinatra (1.0)
+      rack (>= 1.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.5)
+    taps (0.3.24)
+      rack (>= 1.0.1)
+      rest-client (>= 1.4.0, < 1.7.0)
+      sequel (~> 3.20.0)
+      sinatra (~> 1.0.0)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
     thin (1.3.1)
@@ -171,6 +181,7 @@ DEPENDENCIES
   rails_admin!
   sass-rails (~> 3.2.3)
   sqlite3
+  taps
   therubyracer
   thin
   uglifier (>= 1.0.3)
