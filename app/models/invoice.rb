@@ -54,7 +54,7 @@ class Invoice < ActiveRecord::Base
   def posting_on_create
     if !self.payment.nil?
       @posting = Posting.create(
-        :issue => self.issue,
+        :issue => Date::today,
         :value => self.value,
         :account => self.account,
         :invoice => self
