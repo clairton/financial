@@ -29,7 +29,7 @@ RailsAdmin.config do |config|
 
   #  ==> Global list view settings
   # Number of default rows per-page:
-  config.default_items_per_page = 2
+  #config.default_items_per_page = 2
 
   #  ==> Included models
   # Add all excluded models here:
