@@ -13,7 +13,7 @@ class Invoice < ActiveRecord::Base
   validates_date :payment, :allow_nil => true
   #callbacks
   before_update :posting_on_update
-  before_create :posting_on_create
+  after_create :posting_on_create
   #metodos acessores
   attr_accessible :expiration, :payment,
                   :value, :account,
