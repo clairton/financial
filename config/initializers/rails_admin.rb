@@ -112,7 +112,7 @@ RailsAdmin.config do |config|
           ['+', '-']
         end
       end
-      field :code
+      #field :code
       field :reverse
       field :father
     end
