@@ -1,1 +1,1 @@
-@user = User.new(:email => 'clairton.rodrigo@gmail.com',:password => 'c1@irt0n',:admin => true)
+@user = User.new(:email => 'clairton.rodrigo@gmail.com',:password => 'c1@irt0n')
