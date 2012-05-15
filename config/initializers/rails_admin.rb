@@ -92,12 +92,28 @@ RailsAdmin.config do |config|
     end
   end
   
-  # config.model Account do
+  config.model Invoice do
+    edit do
+      field :expiration
+      field :payment
+      field :value
+      field :account
+    end
+  end
+  
+  config.model Account do
     # colocar somente +/- para operacion
     # deixa somente o campo pai
     # deixa somente uma conta reversa 
-    # edit do
-      # field :reverse
-    # end
-  # end
+    edit do
+      field :reverse
+      field :father
+      field :name
+      field :operation, :enum do
+        enum do
+          ['+', '-']
+        end
+      end
+    end
+  end
 end
