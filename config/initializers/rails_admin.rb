@@ -92,6 +92,15 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model Invoice do
+    edit do
+      field :expiration
+      field :payment
+      field :value
+      field :account
+    end
+  end
+  
   # config.model Account do
     # colocar somente +/- para operacion
     # deixa somente o campo pai

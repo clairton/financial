@@ -17,7 +17,7 @@ class Invoice < ActiveRecord::Base
   #metodos acessores
   attr_accessible :expiration, :payment,
                   :value, :account,
-                  :account, :account_id,:posting_ids,
+                  :account_id,:posting_ids,
                   :postings
 
   def posting_on_update
