@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
 	belongs_to :reverse, :class_name => "Account"
 	has_many :childrens, :class_name => "Account", :foreign_key => "father_id"
 	belongs_to :father, :class_name => "Account"
-  validates_presence_of :name, :code, :operation
+  validates_presence_of :name, :operation#, :code
   #validates_associated :reverse, :father
   validates_uniqueness_of :name, :code
   validates_inclusion_of :operation, :in => ['+', '-']
