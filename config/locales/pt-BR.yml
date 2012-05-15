@@ -250,7 +250,7 @@
         created_at: Criado
         updated_at: Atualizado
         account: Conta
-        postings: :postings
+        invoice: :invoice
       invoice:
         issue: Date de Emissão
         expiration: Data de Vencimento
