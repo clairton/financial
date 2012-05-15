@@ -5,11 +5,13 @@ class Account < ActiveRecord::Base
 	belongs_to :reverse, :class_name => "Account", :foreign_key => "reverse_id"
 	#has_many :childrens, :class_name => "Account", :foreign_key => "father_id"
 	belongs_to :father, :class_name => "Account", :foreign_key => "father_id"
-  validates_presence_of :name, :operation, :code
+  validates_presence_of :name, :operation#, :code
   validates_associated :reverse#, :father
-  validates_uniqueness_of :name, :code
+  validates_uniqueness_of :name#, :code
   validates_inclusion_of :operation, :in => ['+', '-']
-  attr_accessible :name, :code, :operation, 
+  attr_accessible :name, 
+                  #:code, 
+                  :operation, 
                   :invoices, 
                   :postings,
                   #:inverse_ids, 
