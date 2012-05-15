@@ -269,6 +269,8 @@
         invoices: Faturas
         postings: Lançamentos
         inverses: Contas Que a Usam como Estorno
+        reverse: Conta Estorno
+        father: Conta Pai
         childrens: Contas Filhas
         postings: :postings
 

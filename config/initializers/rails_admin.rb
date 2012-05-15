@@ -106,14 +106,15 @@ RailsAdmin.config do |config|
     # deixa somente o campo pai
     # deixa somente uma conta reversa 
     edit do
-      field :reverse
-      field :father
       field :name
       field :operation, :enum do
         enum do
           ['+', '-']
         end
       end
+      field :code
+      field :reverse
+      field :father
     end
   end
 end
