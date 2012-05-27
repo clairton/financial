@@ -13,4 +13,9 @@ class Posting < ActiveRecord::Base
                   :additional, 
                   :invoice_id, 
                   :account_id
+
+
+  def custom_label
+    "#{self.additional} #{self.value}"
+  end 
 end

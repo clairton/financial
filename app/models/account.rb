@@ -51,7 +51,11 @@ class Account < ActiveRecord::Base
         return false        
       end        
     end
-  end            
+  end  
+
+  def custom_label
+    self.name
+  end          
                   
   def account
     Account.new

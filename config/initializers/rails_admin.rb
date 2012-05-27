@@ -39,7 +39,7 @@ RailsAdmin.config do |config|
   # config.included_models = [Address, Announcement, AnnouncementType, City, ContactType, Country, Email, Keyword, Neighborhood, Person, Phone, Place, Region, Search, State, Street]
 
   # Application wide tried label methods for models' instances
-#  config.label_methods << :custom_label # Default is [:name, :title]
+  config.label_methods << :custom_label # Default is [:name, :title]
 
   #  ==> Global models configuration
   # config.models do

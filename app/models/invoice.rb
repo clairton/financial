@@ -20,6 +20,11 @@ class Invoice < ActiveRecord::Base
                   :account_id,:posting_ids,
                   :postings
 
+
+  def custom_label
+    "#{self.account.name} #{self.value} #{self.additional}"
+  end 
+
   def posting_on_update
     #se o estado de pagamento foi modificado
     if  self.payment_changed?
