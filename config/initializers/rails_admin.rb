@@ -98,6 +98,7 @@ RailsAdmin.config do |config|
       field :payment
       field :value
       field :account
+      field :additional
     end
   end
   

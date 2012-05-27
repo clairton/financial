@@ -6,5 +6,11 @@ class Posting < ActiveRecord::Base
   validates_associated :invoice
   validates_associated :account
   validates_date :issue
-  attr_accessible :invoice, :account, :value, :issue, :invoice_id, :account_id
+  attr_accessible :invoice, 
+                  :account, 
+                  :value, 
+                  :issue,
+                  :additional, 
+                  :invoice_id, 
+                  :account_id
 end

@@ -5,8 +5,8 @@
   date:
     formats:
       default: "%d/%m/%Y"
-      short: "%d, %B"
-      long: "%d, %B, %Y"
+      short: "%d/%m"
+      long: "%d/%m/%Y"
 
     day_names:
       - Domingo
@@ -251,6 +251,7 @@
         updated_at: Atualizado
         account: Conta
         invoice: :invoice
+        additional: :additional
       invoice:
         issue: Date de Emissão
         expiration: Data de Vencimento
@@ -260,6 +261,7 @@
         created_at: Criado
         updated_at: Atualizado
         postings: :postings
+        additional: :additional
       account:
         name: :name
         code: :code
@@ -365,6 +367,7 @@
   find: Procurar
   postings: Lançamentos
   operation: Operação
+  additional: Adicional
 
   home:
     name: Home

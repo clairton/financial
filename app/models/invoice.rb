@@ -16,7 +16,7 @@ class Invoice < ActiveRecord::Base
   after_create :posting_on_create
   #metodos acessores
   attr_accessible :expiration, :payment,
-                  :value, :account,
+                  :value, :additional, :account,
                   :account_id,:posting_ids,
                   :postings
 
@@ -32,16 +32,19 @@ class Invoice < ActiveRecord::Base
         end
         @a = self.account.reverse
         date = Date::today
+        add = 'estorno '+self.additional
       #pagamento
       else
         @a = self.account
         date = self.payment
+        add = self.additional
       end
       @posting = Posting.create(
         :issue => date,
         :value => self.value,
         :account => @a,
-        :invoice => self
+        :invoice => self,
+        :additional => add
       )
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
@@ -57,7 +60,8 @@ class Invoice < ActiveRecord::Base
         :issue => Date::today,
         :value => self.value,
         :account => self.account,
-        :invoice => self
+        :invoice => self,
+        :additional => self.additional
       )
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
