@@ -22,7 +22,7 @@ class Invoice < ActiveRecord::Base
 
 
   def custom_label
-    "#{self.account.name} #{self.value} #{self.additional}"
+    "Fatura: #{self.account.name} #{self.value} #{self.additional}"
   end 
 
   def posting_on_update

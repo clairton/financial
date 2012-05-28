@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Posting < ActiveRecord::Base
   belongs_to :invoice, :inverse_of => :postings
   belongs_to :account, :inverse_of => :postings
@@ -16,6 +17,6 @@ class Posting < ActiveRecord::Base
 
 
   def custom_label
-    "#{self.additional} #{self.value}"
+    "Lançamento: #{self.additional} #{self.value}"
   end 
 end

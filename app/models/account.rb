@@ -54,7 +54,7 @@ class Account < ActiveRecord::Base
   end  
 
   def custom_label
-    self.name
+    "Conta: #{self.name}"
   end          
                   
   def account

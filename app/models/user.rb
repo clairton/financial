@@ -1,3 +1,4 @@
+#encoding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,7 +10,7 @@ class User < ActiveRecord::Base
   
 
   def custom_label
-    self.email
+    "Email: #{self.email}"
   end 
 
   def account
