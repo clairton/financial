@@ -20,6 +20,10 @@ class Invoice < ActiveRecord::Base
                   :account_id,:posting_ids,
                   :postings
 
+  def initialize(*args)
+    super
+    self.account = Account.new
+  end
 
   def custom_label
     "Fatura: #{self.account.name} #{self.value} #{self.additional}"
