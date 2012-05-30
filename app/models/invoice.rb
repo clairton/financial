@@ -63,9 +63,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def posting_on_create
-    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     if !self.payment.nil?
-      putz '1'
       @posting = Posting.create(
         :issue => Date::today,
         :value => self.value,
@@ -73,14 +71,11 @@ class Invoice < ActiveRecord::Base
         :invoice => self,
         :additional => self.additional
       )
-      putz '2'
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
         @posting.save
       end
-      putz '3'
     end
-    putz '4'
   end
 end
