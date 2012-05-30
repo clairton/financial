@@ -17,6 +17,10 @@ class Posting < ActiveRecord::Base
 
 
   def custom_label
-    "Lançamento: #{self.additional} #{self.value}"
+    if self.value.nil?
+      "#{I18n.t(:new)} #{I18n.t(:posting)}"
+    else
+      "#{I18n.t(:posting)}: #{self.additional} #{self.value}"
+    end
   end 
 end

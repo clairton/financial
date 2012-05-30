@@ -6,7 +6,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :account
   has_many :postings, :inverse_of => :invoice, :dependent => :destroy
   #validaçoes
-  validates_presence_of :expiration, :value, :account
+  validates_presence_of :expiration, :value
   validates_associated :account
   validates_numericality_of :value
   validates_date :expiration
@@ -20,13 +20,12 @@ class Invoice < ActiveRecord::Base
                   :account_id,:posting_ids,
                   :postings
 
-  def initialize(*args)
-    super
-    self.account = Account.new
-  end
-
   def custom_label
-    "Fatura: #{self.account.name} #{self.value} #{self.additional}"
+    if self.account.nil?
+      "#{I18n.t(:new)} #{I18n.t(:invoice)}"
+    else
+      "#{I18n.t(:invoice)}: #{self.account.name} #{self.value} #{self.additional}"
+    end
   end 
 
   def posting_on_update
@@ -64,7 +63,9 @@ class Invoice < ActiveRecord::Base
   end
 
   def posting_on_create
+    puts 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
     if !self.payment.nil?
+      putz '1'
       @posting = Posting.create(
         :issue => Date::today,
         :value => self.value,
@@ -72,11 +73,14 @@ class Invoice < ActiveRecord::Base
         :invoice => self,
         :additional => self.additional
       )
+      putz '2'
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
         @posting.save
       end
+      putz '3'
     end
+    putz '4'
   end
 end

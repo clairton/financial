@@ -25,10 +25,11 @@ class Account < ActiveRecord::Base
                   :father,
                   #:children_ids,
                   :invoice_ids, 
-                  :posting_ids
+                  :posting_ids,
+                  :id
                   
   def reverse_validate
-    if !self.reverse.nil?
+    if !self.reverse.nil? && Account.find(:all).size > 0
       if self.reverse.operation == self.operation
         self.errors.add(:reverse, 'conta estorno deve ter operação diferente operation(+/-)')
         return false 
@@ -41,7 +42,7 @@ class Account < ActiveRecord::Base
   end   
   
   def father_validate
-    if !self.father.nil?
+    if !self.father.nil? && Account.find(:all).size > 0
       if self.father.operation != self.operation
         self.errors.add(:father, 'conta pai deve ter a mesma operation(+/-)')
         return false      
@@ -54,7 +55,11 @@ class Account < ActiveRecord::Base
   end  
 
   def custom_label
-    "Conta: #{self.name}"
+    if self.name.nil?
+      "#{I18n.t(:new)} #{I18n.t(:account)}"
+    else
+      "#{I18n.t(:account)}: #{self.name}"
+    end
   end          
                   
   def account

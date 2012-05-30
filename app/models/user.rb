@@ -10,7 +10,11 @@ class User < ActiveRecord::Base
   
 
   def custom_label
-    "Email: #{self.email}"
+    if self.email.nil?
+      "#{I18n.t(:new)} #{I18n.t(:user)}"
+    else
+      "#{I18n.t(:user)}: #{self.email}"
+    end
   end 
 
   def account
