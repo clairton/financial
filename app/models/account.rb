@@ -7,7 +7,7 @@ class Account < ActiveRecord::Base
 	#has_many :childrens, :class_name => "Account", :foreign_key => "father_id"
 	belongs_to :father, :class_name => "Account", :foreign_key => "father_id"
 	
-  validates_presence_of :name, :operation, :reverse
+  validates_presence_of :name, :operation
   validates_uniqueness_of :name
   validates_inclusion_of :operation, :in => ['+', '-']  
   validate :reverse_validate, :father_validate
@@ -25,6 +25,10 @@ class Account < ActiveRecord::Base
                   :id
                   
   def reverse_validate
+    if self.reverse.nil? && Account.find(:all).size > 0
+        self.errors.add(:reverse, 'conta estorno não pode ficar em branco')
+        return false
+    end
     if !self.reverse.nil? && Account.find(:all).size > 0
       if self.reverse.operation == self.operation
         self.errors.add(:reverse, 'conta estorno deve ter operação diferente operation(+/-)')
@@ -35,7 +39,7 @@ class Account < ActiveRecord::Base
         return false        
       end     
     end
-  end   
+  end
   
   def father_validate
     if !self.father.nil? && Account.find(:all).size > 0
