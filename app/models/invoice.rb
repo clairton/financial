@@ -40,7 +40,7 @@ class Invoice < ActiveRecord::Base
         end
         @a = self.account.reverse
         date = Date::today
-        add = 'estorno '+self.additional
+        add = "estorno #{self.additional}" 
       #pagamento
       else
         @a = self.account
@@ -54,10 +54,11 @@ class Invoice < ActiveRecord::Base
         :invoice => self,
         :additional => add
       )
+      self.calculator(self.value, @a.operation)
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
-        @posting.save
+          @posting.save
       end
     end
   end
@@ -71,11 +72,21 @@ class Invoice < ActiveRecord::Base
         :invoice => self,
         :additional => self.additional
       )
+      self.calculator(self.value, self.account.operation)
       if(@posting.errors)
         @posting.errors.each { |k, v| self.errors.add(:postings, v)}
       else
-        @posting.save
+          @posting.save
       end
     end
+  end
+
+  def calculator(value, operation)
+    @sum = Sum.find(1)
+    value_current = @sum.value
+    e = "#{value_current} #{operation} #{value}";
+    puts e
+    @sum.value = eval(e)
+    @sum.save
   end
 end
