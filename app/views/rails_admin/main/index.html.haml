@@ -119,8 +119,8 @@
           %th.last.shrink
       %tbody
         - @objects.each do |object|
-          - total_sum = @total_sum
-          - @total_sum = eval("#{total_sum}#{object.account.operation}#{object.value}")  
+          - e = "%0.2f %s %0.2f" % [@total_sum,object.account.operation,object.value]
+          - @total_sum = eval(e)
           %tr
             %td
               = check_box_tag "bulk_ids[]", object.id, false
@@ -140,6 +140,5 @@
       .clearfix.total-count= "#{total_count} #{@model_config.label_plural.downcase}"
     - else
       .clearfix.total-count= "#{@objects.size} #{@model_config.label_plural.downcase}"
-  - total_sum = @total_sum
-  = "Total #{total_sum}"
+  = "Total %0.2f" % [@total_sum]
               
