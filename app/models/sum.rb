@@ -1,12 +1,14 @@
 class Sum < ActiveRecord::Base	
 	attr_accessible :value
 
-	           
+	         
   def account
-    Account.new
+    @a = Account.new
+    @a.operation= '+'
+    return @a
   end
   
   def value
-    0
+    0.0
   end
 end
