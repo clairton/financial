@@ -237,7 +237,10 @@
       posting: :posting
       invoice: :invoice
       account: :account
+      sum: :sum
     attributes:
+      sum:
+        value: Valor
       user:
         password: "Senha"
         email: :"Email"
@@ -368,7 +371,7 @@
   postings: Lançamentos
   operation: Operação
   additional: Adicional
-
+  sum: Soma
   home:
     name: Home
   views:
