@@ -5,8 +5,8 @@
   date:
     formats:   
       default: ! '%d/%m/%Y'
-      long: ! '%d de %B de %Y'
-      short: ! '%d de %B'
+      long: ! '%d/%m/%Y'
+      short: ! '%d/%M'
 
     day_names:
       - Domingo
