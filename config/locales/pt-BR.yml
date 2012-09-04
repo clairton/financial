@@ -381,6 +381,7 @@
       truncate: "…"
   admin:
     misc:
+      filter_date_format: "dd/mm/yy"
       search: "Procurar"
       filter: "Filtrar"
       refresh: "Atualizar"
